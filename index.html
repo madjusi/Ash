@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Profil de Isaac Ashuza (Puka) - Créatif, Tech, Passionné">
+  <title>Isaac Ashuza | Profil</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --primary-color: #00ffaa;
+      --primary-glow: rgba(0, 255, 170, 0.4);
+      --glass-bg: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top left, #1f2937 0%, #0f172a 40%, #020617 100%);
+      color: white;
+      padding: 20px;
+    }
+
+    .profile-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .profile-img {
+      width: 130px; height: 130px; border-radius: 50%;
+      object-fit: cover; border: 3px solid var(--primary-color);
+      padding: 4px; margin-bottom: 20px;
+    }
+
+    h1 { font-size: 28px; margin-bottom: 5px; }
+    .tagline { color: #94a3b8; font-size: 14px; margin-bottom: 20px; }
+
+    .bio-btn {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      color: white; padding: 8px 18px; border-radius: 12px;
+      cursor: pointer; transition: 0.3s;
+    }
+    
+    .bio-container { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s ease; }
+    .bio-container.open { max-height: 100px; opacity: 1; margin-top: 15px; }
+
+    .about-me {
+      color: #cbd5e1; font-size: 14px; background: rgba(0, 0, 0, 0.2);
+      padding: 12px; border-radius: 12px;
+    }
+
+    .interests { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 20px 0 30px; }
+    .interest-tag { background: var(--glass-bg); padding: 5px 12px; border-radius: 50px; font-size: 11px; }
+
+    .socials { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+    .socials a { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--glass-bg); color: white; text-decoration: none; transition: 0.3s; }
+    .socials a:hover { background: var(--primary-color); color: black; }
+
+    .whatsapp-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 14px; border-radius: 16px; text-decoration: none;
+      color: black; background: var(--primary-color); font-weight: 600;
+      transition: 0.3s; cursor: pointer; border: none; font-family: 'Poppins', sans-serif;
+    }
+
+    .whatsapp-btn:hover { filter: brightness(1.1); }
+  </style>
+</head>
+
+<body>
+
+  <div class="profile-card">
+    <img src="isaac.png" class="profile-img" alt="Isaac">
+    <h1>Puka</h1>
+    <p class="tagline">Créatif • Tech • Passionné</p>
+
+    <button class="bio-btn" id="bioBtn" onclick="toggleBio()">
+      Bio <i class="fas fa-chevron-down"></i>
+    </button>
+
+    <div class="bio-container" id="bioContainer">
+      <p class="about-me">Passionné par le design moderne et la tech, je conçois des interfaces fluides.</p>
+    </div>
+
+    <div class="interests">
+      <span class="interest-tag">UI/UX</span>
+      <span class="interest-tag">Graphisme</span>
+      <span class="interest-tag">Tech</span>
+    </div>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/ash06769?igsh=MWFqNnZ1bHA1bXRkYw==" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.snapchat.com/add/isaacashuza12" target="_blank"><i class="fab fa-snapchat"></i></a>
+      <a href="https://www.tiktok.com/@isaacash801" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <button id="waBtn" class="whatsapp-btn" onclick="sendWhatsApp()">
+      <i class="fab fa-whatsapp"></i> <span id="btnText">Me contacter</span>
+    </button>
+
+    <div class="footer" style="margin-top: 25px; font-size: 11px; color: #64748b;">© 2024 Isaac Ashuza</div>
+  </div>
+
+  <script>
+    function toggleBio() {
+      const bio = document.getElementById("bioContainer");
+      const btn = document.getElementById("bioBtn");
+      bio.classList.toggle("open");
+      btn.innerHTML = bio.classList.contains("open") ? 
+        'Fermer <i class="fas fa-chevron-up"></i>' : 
+        'Bio <i class="fas fa-chevron-down"></i>';
+    }
+
+    function sendWhatsApp() {
+      const btn = document.getElementById("waBtn");
+      const btnText = document.getElementById("btnText");
+      
+      btn.style.pointerEvents = "none";
+      btnText.innerText = "Traitement en cours...";
+      
+      setTimeout(() => {
+        btnText.innerText = "Demande traitée avec succès !";
+        btn.style.background = "#22c55e"; 
+        
+        setTimeout(() => {
+          // Utilisation du numéro sans espace
+          window.open("https://wa.me/243971981127", "_blank");
+          
+          setTimeout(() => {
+            btnText.innerText = "Me contacter";
+            btn.style.background = "var(--primary-color)";
+            btn.style.pointerEvents = "auto";
+          }, 3000);
+        }, 1000);
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>
